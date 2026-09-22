@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA OS 2035 | Sovereign Web3 Network</title>
+  <link rel="stylesheet" href="./style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- Animated Interactive Motion Network Canvas -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Glowing Background Accent Orbs -->
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+  <div class="glow-orb orb-3"></div>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fa-solid fa-atom logo-icon"></i> AURA <span class="accent-text">OS 2035</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#hero">Overview</a></li>
+      <li><a href="#story">Day in 2035</a></li>
+      <li><a href="#pillars">Web3 Pillars</a></li>
+      <li><a href="#facts">Knowledge Hub</a></li>
+    </ul>
+    <button class="wallet-btn animated-glow-btn" id="connectWalletBtn" onclick="connectMetaMask()">
+      <i class="fa-solid fa-wallet"></i> <span id="walletText">Connect MetaMask</span>
+    </button>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="hero" class="hero-section">
+    <div class="hero-content">
+      <div class="badge pulse-badge">
+        <i class="fa-solid fa-tower-broadcast"></i> CHENNAI PROTOCOL NODE • YEAR 2035
+      </div>
+      <h1 class="hero-title">The Internet Changed.<br><span class="gradient-text glitch-text">You Own It Now.</span></h1>
+      <p class="hero-desc">Experience a day powered by true digital ownership. No tech monopolies, no centralized servers—just peer-to-peer trust, sovereign identities, and automated smart agreements.</p>
+      
+      <div class="hero-actions">
+        <a href="#story" class="primary-btn motion-btn">
+          <span>Enter Experience</span> <i class="fa-solid fa-arrow-down-long"></i>
+        </a>
+        <button class="secondary-btn motion-btn" id="testNodeBtn" onclick="runNodeTest()">
+          <i class="fa-solid fa-bolt"></i> Test Node Wallet
+        </button>
+        <button class="secondary-btn motion-btn" onclick="signTestMessage()">
+          <i class="fa-solid fa-pen-nib"></i> Sign Verification
+        </button>
+      </div>
+      
+      <!-- Interactive Status Dashboard Card -->
+      <div id="walletStatusCard" class="glass-card status-card floating-card">
+        <div class="status-pulse-ring" id="statusRing"></div>
+        <span id="statusMessage">Node Status: Standby • Click button to connect</span>
+      </div>
+
+      <!-- Live Diagnostic Output Panel -->
+      <div id="testOutputPanel" class="glass-card test-panel hidden">
+        <div class="test-header">
+          <span><i class="fa-solid fa-terminal"></i> Node Diagnostic Console</span>
+          <button onclick="closeTestPanel()" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="test-body" id="testLogContainer">
+          <p class="log-line info">> Diagnostic sequence initiated...</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Interactive Story Timeline -->
+  <section id="story" class="section">
+    <h2 class="section-title">A Day in 2035: Living Decentralized</h2>
+    <p class="section-subtitle">Scroll through a typical morning governed by zero-trust Web3 networks.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-icon icon-glow"><i class="fa-solid fa-mug-hot"></i></div>
+        <div class="timeline-content glass-card hover-lift">
+          <span class="time-stamp">08:30 AM • Peer-to-Peer Fuel</span>
+          <h3>Instant Micro-Transactions</h3>
+          <p>You purchase coffee downtown. Payments settle instantly directly to the merchant via layer-2 zero-knowledge rollups with zero processing commissions.</p>
+          <div class="tech-tag"><i class="fa-solid fa-coins"></i> Micro-Settlement Protocols</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-icon icon-glow"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div class="timeline-content glass-card hover-lift">
+          <span class="time-stamp">10:15 AM • Sovereign Credentials</span>
+          <h3>Zero-Knowledge Identity</h3>
+          <p>Instantly prove degree verification and credential authenticity directly from your wallet without exposing personal identity documents.</p>
+          <div class="tech-tag"><i class="fa-solid fa-id-card"></i> Soulbound Tokens & ZK-Proofs</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-icon icon-glow"><i class="fa-solid fa-file-contract"></i></div>
+        <div class="timeline-content glass-card hover-lift">
+          <span class="time-stamp">02:00 PM • Escrow Settlement</span>
+          <h3>Automated Smart Agreements</h3>
+          <p>Deliver digital creative assets on-chain. Smart contracts verify signature outputs and trigger instant wallet payouts.</p>
+          <div class="tech-tag"><i class="fa-solid fa-code"></i> Immutable Smart Contracts</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Web3 Architecture Pillars -->
+  <section id="pillars" class="section">
+    <h2 class="section-title">Core Web3 Architecture</h2>
+    <p class="section-subtitle">Fundamental pillars powering sovereign digital networks.</p>
+
+    <div class="grid-container">
+      <div class="glass-card hover-lift glowing-border">
+        <i class="fa-solid fa-link concept-icon"></i>
+        <h3>Blockchain</h3>
+        <p>An immutable ledger recording cryptographic states across distributed validator nodes worldwide.</p>
+      </div>
+      <div class="glass-card hover-lift glowing-border">
+        <i class="fa-solid fa-bolt concept-icon"></i>
+        <h3>Smart Contracts</h3>
+        <p>Self-executing code running on-chain exactly as written without intermediate operational risks.</p>
+      </div>
+      <div class="glass-card hover-lift glowing-border">
+        <i class="fa-solid fa-shield-halved concept-icon"></i>
+        <h3>Digital Identity</h3>
+        <p>Complete control over credentials, access permissions, and personal data assets using private key encryption.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive 3D Flip Cards -->
+  <section id="facts" class="section">
+    <h2 class="section-title">Knowledge Hub</h2>
+    <p class="section-subtitle">Hover over cards to flip and explore key concepts.</p>
+    
+    <div class="facts-grid">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front glass-card">
+            <i class="fa-solid fa-key icon-glow"></i>
+            <h4>Self-Sovereignty</h4>
+            <span class="flip-hint">Hover to Flip <i class="fa-solid fa-rotate"></i></span>
+          </div>
+          <div class="flip-card-back glass-card">
+            <p>Your cryptographic private keys serve as your universal passport and authorization across all Web3 services.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front glass-card">
+            <i class="fa-solid fa-code-merge icon-glow"></i>
+            <h4>Smart Execution</h4>
+            <span class="flip-hint">Hover to Flip <i class="fa-solid fa-rotate"></i></span>
+          </div>
+          <div class="flip-card-back glass-card">
+            <p>Automated decentralized agreements eliminate trust requirements and manual intermediary verification steps.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>AURA OS 2035 • Built with Modern Web3 JavaScript & Canvas API</p>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
